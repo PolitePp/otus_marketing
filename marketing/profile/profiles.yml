@@ -1,0 +1,11 @@
+marketing:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: marketing_tutorial
+      host: rc1b-0bjpn0fr8v02tfnp.mdb.yandexcloud.net
+      port: 9440
+      user: admin
+      password: Qwerty123
+      secure: True

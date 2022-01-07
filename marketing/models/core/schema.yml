@@ -1,0 +1,19 @@
+
+version: 2
+
+models:
+  - name: core_cost
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: core_lead
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
