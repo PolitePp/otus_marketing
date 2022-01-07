@@ -1,31 +1,31 @@
 select
-        gcf.id
-        , gd.dt
+        gcf.id as id
+        , gd.dt as dt
 
-        , gs.domain
-        , gs.description
+        , gs.domain as domain
+        , gs.description as description
 
-        , ga.status
-        , ga.caption
-        , ga.enabled
-        , ga.service
+        , ga.status as status
+        , ga.caption as caption
+        , ga.enabled as enabled
+        , ga.service as service
 
-        , gt.source
-        , gt.medium
-        , gt.campaign
-        , gt.content
+        , gt.source as source
+        , gt.medium as medium
+        , gt.campaign as campaign
+        , gt.content as content
         , splitByChar('|', coalesce(content, ''))[indexOf(splitByChar('|', coalesce(content, '')), 'cid') + 1] as cid
         , splitByChar('|', coalesce(content, ''))[indexOf(splitByChar('|', coalesce(content, '')), 'kwd') + 1] as kwd
         , splitByChar('|', coalesce(content, ''))[indexOf(splitByChar('|', coalesce(content, '')), 'gid') + 1] as gid
         , splitByChar('|', coalesce(content, ''))[indexOf(splitByChar('|', coalesce(content, '')), 'aid') + 1] as aid
-        , gt.keyword
-        , gt.grouping
-        , gt.landing_page
+        , gt.keyword as keyword
+        , gt.grouping as grouping
+        , gt.landing_page as landing_page
 
-        , gcf.vat_included
-        , gcf.impressions
-        , gcf.clicks
-        , gcf.cost
+        , gcf.vat_included as vat_included
+        , gcf.impressions as impressions
+        , gcf.clicks as clicks
+        , case when gcf.account_id = 33203 then gcf.cost * 75.52 else gcf.cost end as cost --Use exchange rate from google on 07.01.2022
 from marketing_tutorial.general_costs_facts gcf
 left join marketing_tutorial.general_dates gd
 on gcf.dates_id = gd.id

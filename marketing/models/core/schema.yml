@@ -17,3 +17,11 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: core_lead_add_utm
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
